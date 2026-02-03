@@ -7,12 +7,7 @@ class UnitConverterApp {
         this.preferences = this.loadPreferences();
                 this.isUnlocked = this.loadUnlockStatus() || false;
         this.lockedCategories = ['energy', 'force', 'torque', 'dataSpeed', 'pants', 'shoes', 'tops'];
-        this.init();
-    }
-
-    init() {
-        this.cacheElements();
-        this.setupEventListeners();
+        this.pendingCategory = null; // Store category user tried to access
         this.initLanguage();
         
         // 检查URL hash来确定初始类别
@@ -35,7 +30,12 @@ class UnitConverterApp {
         alert(i18n.t('unlockedMsg') || "Unlocked successfully! Enjoy.");
         this.renderCategoryLocks();
         this.hidePaywall();
-        // Retry setting category if pending? simplified for now.
+        
+        // Retry setting category if pending
+        if (this.pendingCategory) {
+            this.setCategory(this.pendingCategory);
+            this.pendingCategory = null;
+        }
     }
 
 
@@ -100,6 +100,9 @@ class UnitConverterApp {
         
         // 更新历史记录
         this.renderHistory();
+        
+        // 重新渲染锁图标
+        this.renderCategoryLocks();
     }
 
     setupEventListeners() {
@@ -441,6 +444,7 @@ class UnitConverterApp {
     }
 
     showPaywall(category) {
+        this.pendingCategory = category;
         let modal = document.getElementById('paywall-modal');
         if (!modal) {
             this.createPaywallModal();
@@ -527,21 +531,29 @@ class UnitConverterApp {
         
         this.categoryBtns.forEach(btn => {
             const cat = btn.dataset.category;
-            const isLocked = this.lockedCategories && this.lockedCategories.includes(cat) && !this.isUnlocked;
+            const isSpecial = this.lockedCategories && this.lockedCategories.includes(cat);
             
+            // Remove existing icon first (to update state)
             let icon = btn.querySelector('.lock-icon');
-            if (isLocked) {
-                if (!icon) {
-                    icon = document.createElement('span');
-                    icon.className = 'lock-icon';
+            if (icon) icon.remove();
+            
+            if (isSpecial) {
+                icon = document.createElement('span');
+                icon.className = 'lock-icon';
+                icon.style.fontSize = '12px';
+                icon.style.marginLeft = '4px';
+                
+                if (!this.isUnlocked) {
+                    // Still locked
                     icon.innerHTML = ' 🔒';
-                    icon.style.fontSize = '12px';
-                    icon.style.marginLeft = '4px';
-                    btn.appendChild(icon);
+                    btn.style.opacity = '0.7';
+                } else {
+                    // Unlocked
+                    icon.innerHTML = ' 🔓';
+                    btn.style.opacity = '1';
                 }
-                btn.style.opacity = '0.7';
+                btn.appendChild(icon);
             } else {
-                if (icon) icon.remove();
                 btn.style.opacity = '1';
             }
         });
