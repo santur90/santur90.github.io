@@ -32,7 +32,12 @@ const translations = {
             power: '功率',
             pressure: '压力',
             time: '时间',
-            currency: '货币'
+            currency: '货币',
+            energy: '能量',
+            force: '力',
+            torque: '扭矩',
+            dataSpeed: '数据传输速度'
+
         },
         units: {
             // Length
@@ -147,7 +152,34 @@ const translations = {
             'SGD': '新加坡元 (SGD)',
             'NZD': '新西兰元 (NZD)',
             'MXN': '墨西哥比索 (MXN)',
-            'BRL': '巴西雷亚尔 (BRL)'
+            'BRL': '巴西雷亚尔 (BRL)',
+            'J': '焦耳 (J)',
+            'kJ': '千焦 (kJ)',
+            'cal': '卡路里 (cal)',
+            'kcal': '千卡 (kcal)',
+            'Wh': '瓦时 (Wh)',
+            'kWh': '千瓦时 (kWh)',
+            'eV': '电子伏特 (eV)',
+            'BTU': '英热单位 (BTU)',
+            'ft-lb': '英尺-磅 (ft-lb)',
+            'N': '牛顿 (N)',
+            'kN': '千牛 (kN)',
+            'lbf': '磅力 (lbf)',
+            'kgf': '千克力 (kgf)',
+            'dyn': '达因 (dyn)',
+            'N-m': '牛顿米 (N·m)',
+            'lb-ft': '磅英尺 (lb-ft)',
+            'lb-in': '磅英寸 (lb-in)',
+            'kg-m': '千克米 (kg·m)',
+            'bps': '比特/秒 (bps)',
+            'kbps': '千比特/秒 (kbps)',
+            'Mbps': '兆比特/秒 (Mbps)',
+            'Gbps': '吉比特/秒 (Gbps)',
+            'B/s': '字节/秒 (B/s)',
+            'KB/s': '千字节/秒 (KB/s)',
+            'MB/s': '兆字节/秒 (MB/s)',
+            'GB/s': '吉字节/秒 (GB/s)'
+
         }
     },
     en: {
@@ -181,7 +213,12 @@ const translations = {
             power: 'Power',
             pressure: 'Pressure',
             time: 'Time',
-            currency: 'Currency'
+            currency: 'Currency',
+            energy: 'Energy',
+            force: 'Force',
+            torque: 'Torque',
+            dataSpeed: 'Data Transfer Speed'
+
         },
         units: {
             'm': 'Meter (m)', 'km': 'Kilometer (km)', 'cm': 'Centimeter (cm)', 'mm': 'Millimeter (mm)',
@@ -213,7 +250,34 @@ const translations = {
             'CNY': 'Chinese Yuan (CNY)', 'JPY': 'Japanese Yen (JPY)', 'KRW': 'Korean Won (KRW)',
             'AUD': 'Australian Dollar (AUD)', 'CAD': 'Canadian Dollar (CAD)', 'CHF': 'Swiss Franc (CHF)',
             'HKD': 'Hong Kong Dollar (HKD)', 'INR': 'Indian Rupee (INR)', 'SGD': 'Singapore Dollar (SGD)',
-            'NZD': 'New Zealand Dollar (NZD)', 'MXN': 'Mexican Peso (MXN)', 'BRL': 'Brazilian Real (BRL)'
+            'NZD': 'New Zealand Dollar (NZD)', 'MXN': 'Mexican Peso (MXN)', 'BRL': 'Brazilian Real (BRL)',
+            'J': 'Joule (J)',
+            'kJ': 'Kilojoule (kJ)',
+            'cal': 'Calorie (cal)',
+            'kcal': 'Kilocalorie (kcal)',
+            'Wh': 'Watt-hour (Wh)',
+            'kWh': 'Kilowatt-hour (kWh)',
+            'eV': 'Electronvolt (eV)',
+            'BTU': 'British Thermal Unit (BTU)',
+            'ft-lb': 'Foot-pound (ft-lb)',
+            'N': 'Newton (N)',
+            'kN': 'Kilonewton (kN)',
+            'lbf': 'Pound-force (lbf)',
+            'kgf': 'Kilogram-force (kgf)',
+            'dyn': 'Dyne (dyn)',
+            'N-m': 'Newton-meter (N·m)',
+            'lb-ft': 'Pound-foot (lb-ft)',
+            'lb-in': 'Pound-inch (lb-in)',
+            'kg-m': 'Kilogram-meter (kg·m)',
+            'bps': 'Bit per second (bps)',
+            'kbps': 'Kilobit per second (kbps)',
+            'Mbps': 'Megabit per second (Mbps)',
+            'Gbps': 'Gigabit per second (Gbps)',
+            'B/s': 'Byte per second (B/s)',
+            'KB/s': 'Kilobyte per second (KB/s)',
+            'MB/s': 'Megabyte per second (MB/s)',
+            'GB/s': 'Gigabyte per second (GB/s)'
+
         }
     },
     fr: {
@@ -247,7 +311,12 @@ const translations = {
             power: 'Puissance',
             pressure: 'Pression',
             time: 'Temps',
-            currency: 'Devise'
+            currency: 'Devise',
+            energy: 'Énergie',
+            force: 'Force',
+            torque: 'Couple',
+            dataSpeed: 'Vitesse de transfert'
+
         },
         units: {
             'm': 'Mètre (m)', 'km': 'Kilomètre (km)', 'cm': 'Centimètre (cm)', 'mm': 'Millimètre (mm)',
@@ -279,7 +348,34 @@ const translations = {
             'CNY': 'Yuan chinois (CNY)', 'JPY': 'Yen japonais (JPY)', 'KRW': 'Won coréen (KRW)',
             'AUD': 'Dollar australien (AUD)', 'CAD': 'Dollar canadien (CAD)', 'CHF': 'Franc suisse (CHF)',
             'HKD': 'Dollar de Hong Kong (HKD)', 'INR': 'Roupie indienne (INR)', 'SGD': 'Dollar de Singapour (SGD)',
-            'NZD': 'Dollar néo-zélandais (NZD)', 'MXN': 'Peso mexicain (MXN)', 'BRL': 'Réal brésilien (BRL)'
+            'NZD': 'Dollar néo-zélandais (NZD)', 'MXN': 'Peso mexicain (MXN)', 'BRL': 'Réal brésilien (BRL)',
+            'J': 'Joule (J)',
+            'kJ': 'Kilojoule (kJ)',
+            'cal': 'Calorie (cal)',
+            'kcal': 'Kilocalorie (kcal)',
+            'Wh': 'Watt-heure (Wh)',
+            'kWh': 'Kilowatt-heure (kWh)',
+            'eV': 'Électron-volt (eV)',
+            'BTU': 'British Thermal Unit (BTU)',
+            'ft-lb': 'Pied-libre (ft-lb)',
+            'N': 'Newton (N)',
+            'kN': 'Kilonewton (kN)',
+            'lbf': 'Livre-force (lbf)',
+            'kgf': 'Kilogramme-force (kgf)',
+            'dyn': 'Dyne (dyn)',
+            'N-m': 'Newton-mètre (N·m)',
+            'lb-ft': 'Livre-pied (lb-ft)',
+            'lb-in': 'Livre-pouce (lb-in)',
+            'kg-m': 'Kilogramme-mètre (kg·m)',
+            'bps': 'Bit par seconde (bps)',
+            'kbps': 'Kilobit par seconde (kbps)',
+            'Mbps': 'Mégabit par seconde (Mbps)',
+            'Gbps': 'Gigabit par seconde (Gbps)',
+            'B/s': 'Octet par seconde (B/s)',
+            'KB/s': 'Kilooctet par seconde (KB/s)',
+            'MB/s': 'Mégaoctet par seconde (MB/s)',
+            'GB/s': 'Gigaoctet par seconde (GB/s)'
+
         }
     },
     es: {

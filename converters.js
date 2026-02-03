@@ -274,6 +274,60 @@ const converters = {
         },
         note: '注：使用实时汇率数据，每10分钟自动更新'
     }
+,
+    // Energy (Base: Joule)
+    energy: {
+        name: '能量',
+        units: {
+            'J': { name: '焦耳 (J)', factor: 1 },
+            'kJ': { name: '千焦 (kJ)', factor: 0.001 },
+            'cal': { name: '卡路里 (cal)', factor: 0.239006 },
+            'kcal': { name: '千卡 (kcal)', factor: 0.000239006 },
+            'Wh': { name: '瓦时 (Wh)', factor: 0.000277778 },
+            'kWh': { name: '千瓦时 (kWh)', factor: 2.77778e-7 },
+            'eV': { name: '电子伏特 (eV)', factor: 6.242e+18 },
+            'BTU': { name: '英热单位 (BTU)', factor: 0.000947817 },
+            'ft-lb': { name: '英尺-磅 (ft-lb)', factor: 0.737562 }
+        }
+    },
+    
+    // Force (Base: Newton)
+    force: {
+        name: '力',
+        units: {
+            'N': { name: '牛顿 (N)', factor: 1 },
+            'kN': { name: '千牛 (kN)', factor: 0.001 },
+            'lbf': { name: '磅力 (lbf)', factor: 0.224809 },
+            'kgf': { name: '千克力 (kgf)', factor: 0.101972 },
+            'dyn': { name: '达因 (dyn)', factor: 100000 }
+        }
+    },
+
+    // Torque (Base: Newton-meter)
+    torque: {
+        name: '扭矩',
+        units: {
+            'N-m': { name: '牛顿米 (N·m)', factor: 1 },
+            'lb-ft': { name: '磅英尺 (lb-ft)', factor: 0.737562 },
+            'lb-in': { name: '磅英寸 (lb-in)', factor: 8.85075 },
+            'kg-m': { name: '千克米 (kg·m)', factor: 0.101972 }
+        }
+    },
+
+    // Data Speed (Base: bit per second)
+    dataSpeed: {
+        name: '数据传输速度',
+        units: {
+            'bps': { name: '比特/秒 (bps)', factor: 1 },
+            'kbps': { name: '千比特/秒 (kbps)', factor: 0.001 },
+            'Mbps': { name: '兆比特/秒 (Mbps)', factor: 0.000001 },
+            'Gbps': { name: '吉比特/秒 (Gbps)', factor: 1e-9 },
+            'B/s': { name: '字节/秒 (B/s)', factor: 0.125 },
+            'KB/s': { name: '千字节/秒 (KB/s)', factor: 0.000125 },
+            'MB/s': { name: '兆字节/秒 (MB/s)', factor: 1.25e-7 },
+            'GB/s': { name: '吉字节/秒 (GB/s)', factor: 1.25e-10 }
+        }
+    },
 };
 
 // 通用转换函数
