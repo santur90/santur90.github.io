@@ -204,9 +204,6 @@ const translations = {
         scanToShare: 'Scan to share on WeChat',
         wechatHint: 'Scan this QR code with WeChat to share',
         close: 'Close',
-        unlockFeature: 'Desbloquear',
-        unlockedMsg: '¡Desbloqueado!',
-        payDescription: 'Pago único para desbloquear todo'
         unlockFeature: 'Unlock Feature',
         unlockedMsg: 'Unlocked successfully!',
         payDescription: 'One-time payment to unlock all special converters',
@@ -409,6 +406,9 @@ const translations = {
         scanToShare: 'Escanear para compartir en WeChat',
         wechatHint: 'Escanea este código QR con WeChat para compartir',
         close: 'Cerrar',
+        unlockFeature: 'Desbloquear',
+        unlockedMsg: '¡Desbloqueado!',
+        payDescription: 'Pago único para desbloquear todo',
         categories: {
             length: 'Longitud',
             weight: 'Peso',
