@@ -422,6 +422,11 @@ const translations = {
             pressure: 'Presión',
             time: 'Tiempo',
             currency: 'Moneda'
+        ,
+            energy: 'Energía',
+            force: 'Fuerza',
+            torque: 'Esfuerzo de torsión',
+            dataSpeed: 'Velocidad de datos'
         },
         units: {
             'm': 'Metro (m)', 'km': 'Kilómetro (km)', 'cm': 'Centímetro (cm)', 'mm': 'Milímetro (mm)',
@@ -454,6 +459,37 @@ const translations = {
             'AUD': 'Dólar australiano (AUD)', 'CAD': 'Dólar canadiense (CAD)', 'CHF': 'Franco suizo (CHF)',
             'HKD': 'Dólar de Hong Kong (HKD)', 'INR': 'Rupia india (INR)', 'SGD': 'Dólar de Singapur (SGD)',
             'NZD': 'Dólar neozelandés (NZD)', 'MXN': 'Peso mexicano (MXN)', 'BRL': 'Real brasileño (BRL)'
+        ,
+            // Energy
+            'J': 'Julio (J)',
+            'kJ': 'Kilojulio (kJ)',
+            'cal': 'Caloría (cal)',
+            'kcal': 'Kilocaloría (kcal)',
+            'Wh': 'Vatio-hora (Wh)',
+            'kWh': 'Kilovatio-hora (kWh)',
+            'eV': 'Electronvoltio (eV)',
+            'BTU': 'BTU',
+            'ft-lb': 'Pie-libra (ft-lb)',
+            // Force
+            'N': 'Newton (N)',
+            'kN': 'Kilonewton (kN)',
+            'lbf': 'Libra-fuerza (lbf)',
+            'kgf': 'Kilogramo-fuerza (kgf)',
+            'dyn': 'Dina (dyn)',
+            // Torque
+            'N-m': 'Newton-metro (N·m)',
+            'lb-ft': 'Libra-pie (lb-ft)',
+            'lb-in': 'Libra-pulgada (lb-in)',
+            'kg-m': 'Kilogramo-metro (kg·m)',
+            // Data Speed
+            'bps': 'Bit por segundo (bps)',
+            'kbps': 'Kilobit por segundo (kbps)',
+            'Mbps': 'Megabit por segundo (Mbps)',
+            'Gbps': 'Gigabit por segundo (Gbps)',
+            'B/s': 'Byte por segundo (B/s)',
+            'KB/s': 'Kilobyte por segundo (KB/s)',
+            'MB/s': 'Megabyte por segundo (MB/s)',
+            'GB/s': 'Gigabyte por segundo (GB/s)'
         }
     }
 };

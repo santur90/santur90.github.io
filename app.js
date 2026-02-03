@@ -12,7 +12,7 @@ class UnitConverterApp {
         
         // 检查URL hash来确定初始类别
         const hashCategory = window.location.hash.slice(1); // 移除 #
-        const validCategories = ['length', 'weight', 'temperature', 'volume', 'area', 'speed', 'dataStorage', 'fuelMileage', 'power', 'pressure', 'time', 'currency'];
+        const validCategories = ['length', 'weight', 'temperature', 'volume', 'area', 'speed', 'dataStorage', 'fuelMileage', 'power', 'pressure', 'time', 'currency', 'energy', 'force', 'torque', 'dataSpeed'];
         const category = validCategories.includes(hashCategory) ? hashCategory : (this.preferences.category || 'length');
         
         this.setCategory(category);
