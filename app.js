@@ -31,9 +31,30 @@ class UnitConverterApp {
         return localStorage.getItem('isProUnlocked') === 'true';
     }
 
+    generateVerificationCode() {
+        const code = 'PAY' + Date.now().toString(36).toUpperCase() + Math.random().toString(36).substr(2, 5).toUpperCase();
+        localStorage.setItem('pendingPaymentCode', code);
+        return code;
+    }
+
+    verifyPayment(code) {
+        const expectedCode = localStorage.getItem('pendingPaymentCode');
+        if (code === expectedCode) {
+            localStorage.removeItem('pendingPaymentCode');
+            this.unlockPro();
+            return true;
+        }
+        return false;
+    }
+
+    checkPendingPayment() {
+        return localStorage.getItem('pendingPaymentCode') ? true : false;
+    }
+
     unlockPro() {
         this.isUnlocked = true;
         localStorage.setItem('isProUnlocked', 'true');
+        localStorage.removeItem('pendingPaymentCode');
         alert(i18n.t('unlockedMsg') || "Unlocked successfully! Enjoy.");
         this.renderCategoryLocks();
         this.hidePaywall();
@@ -477,30 +498,57 @@ class UnitConverterApp {
         // Simple inline styles for modal
         modal.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px);';
         
-        const content = `
-            <div style="background: white; padding: 30px; border-radius: 16px; width: 90%; max-width: 350px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.3); position: relative; animation: popIn 0.3s ease;">
-                <button id="close-paywall-x" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #999;">&times;</button>
-                <div style="font-size: 48px; margin-bottom: 15px;">🔒</div>
-                <h3 id="paywall-msg-text" style="margin-bottom: 10px; font-size: 20px; font-weight: bold; color: #333;">Unlock Premium</h3>
-                <p style="color: #666; margin-bottom: 25px; line-height: 1.5; font-size: 14px;" data-i18n="payDescription">
-                    One-time payment to unlock Energy, Force, Torque, Data Speed and more.
-                </p>
-                <div style="background: #f5f5f7; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
-                    <span style="font-size: 28px; font-weight: 800; color: #0070BA;">$0.99</span>
-                    <span style="color: #666; font-size: 12px;">/ lifetime</span>
-                </div>
-                
-                <a href="https://paypal.me/santur90/0.99" target="_blank" id="pay-btn" style="display: block; width: 100%; background: #0070BA; color: white; border: none; padding: 14px; border-radius: 30px; font-weight: bold; text-decoration: none; margin-bottom: 15px; transition: transform 0.2s;">
-                    Pay with PayPal
-                </a>
-                
-                <div style="border-top: 1px solid #eee; padding-top: 15px;">
-                    <button id="restore-btn" style="background: none; border: none; color: #0070BA; font-size: 13px; font-weight: 600; cursor: pointer;">
-                        Already Paid? / Restore
+        let content;
+        // Check if there's a pending verification
+        if (this.checkPendingPayment()) {
+            const code = localStorage.getItem('pendingPaymentCode');
+            content = `
+                <div style="background: white; padding: 30px; border-radius: 16px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.3); position: relative; animation: popIn 0.3s ease;">
+                    <button id="close-paywall-x" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #999;">&times;</button>
+                    <div style="font-size: 48px; margin-bottom: 15px;">✓</div>
+                    <h3 style="margin-bottom: 10px; font-size: 20px; font-weight: bold; color: #333;">Verify Payment</h3>
+                    <p style="color: #666; margin-bottom: 20px; line-height: 1.5; font-size: 14px;">
+                        Thank you for your payment! Please enter your verification code to unlock premium features.
+                    </p>
+                    <div style="background: #f5f5f7; padding: 15px; border-radius: 10px; margin-bottom: 20px; font-family: monospace;">
+                        <p style="margin: 0; color: #999; font-size: 12px;">Your Code:</p>
+                        <p id="code-display" style="margin: 10px 0 0 0; font-size: 18px; font-weight: bold; color: #0070BA; word-break: break-all;">${code}</p>
+                    </div>
+                    <input type="text" id="verify-code-input" placeholder="Paste verification code here" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 15px; font-size: 14px; box-sizing: border-box;">
+                    <button id="verify-btn" style="display: block; width: 100%; background: #0070BA; color: white; border: none; padding: 14px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-bottom: 10px;">
+                        Verify & Unlock
                     </button>
+                    <p style="color: #999; font-size: 12px; margin: 0;">
+                        Copy the code above before leaving this page
+                    </p>
                 </div>
-            </div>
-        `;
+            `;
+        } else {
+            content = `
+                <div style="background: white; padding: 30px; border-radius: 16px; width: 90%; max-width: 350px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.3); position: relative; animation: popIn 0.3s ease;">
+                    <button id="close-paywall-x" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #999;">&times;</button>
+                    <div style="font-size: 48px; margin-bottom: 15px;">🔒</div>
+                    <h3 id="paywall-msg-text" style="margin-bottom: 10px; font-size: 20px; font-weight: bold; color: #333;">Unlock Premium</h3>
+                    <p style="color: #666; margin-bottom: 25px; line-height: 1.5; font-size: 14px;" data-i18n="payDescription">
+                        One-time payment to unlock Energy, Force, Torque, Data Speed and more.
+                    </p>
+                    <div style="background: #f5f5f7; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                        <span style="font-size: 28px; font-weight: 800; color: #0070BA;">$0.99</span>
+                        <span style="color: #666; font-size: 12px;">/ lifetime</span>
+                    </div>
+                    
+                    <a href="https://paypal.me/santur90/0.99" target="_blank" id="pay-btn" style="display: block; width: 100%; background: #0070BA; color: white; border: none; padding: 14px; border-radius: 30px; font-weight: bold; text-decoration: none; margin-bottom: 15px; transition: transform 0.2s;">
+                        Pay with PayPal
+                    </a>
+                    
+                    <div style="border-top: 1px solid #eee; padding-top: 15px;">
+                        <button id="restore-btn" style="background: none; border: none; color: #0070BA; font-size: 13px; font-weight: 600; cursor: pointer;">
+                            Already Paid? / Restore
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
         
         modal.innerHTML = content;
         document.body.appendChild(modal);
@@ -520,17 +568,43 @@ class UnitConverterApp {
         
         document.getElementById('close-paywall-x').addEventListener('click', () => this.hidePaywall());
         
-        document.getElementById('pay-btn').addEventListener('click', () => {
-             // Simulate "waiting for payment" then unlock
-             // In a real usage, we assume they pay.
-             setTimeout(() => {
-                 this.unlockPro();
-             }, 5000); 
+        document.getElementById('pay-btn').addEventListener('click', (e) => {
+            // Generate verification code before redirecting
+            this.generateVerificationCode();
+            // The link href will handle the redirect
         });
         
-        document.getElementById('restore-btn').addEventListener('click', () => {
-             this.unlockPro();
-        });
+        const verifyBtn = document.getElementById('verify-btn');
+        if (verifyBtn) {
+            verifyBtn.addEventListener('click', () => {
+                const inputCode = document.getElementById('verify-code-input').value.trim();
+                if (this.verifyPayment(inputCode)) {
+                    // Payment verified successfully
+                } else {
+                    alert('Invalid verification code. Please check and try again.');
+                }
+            });
+            
+            // Allow pressing Enter to verify
+            const input = document.getElementById('verify-code-input');
+            if (input) {
+                input.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        verifyBtn.click();
+                    }
+                });
+            }
+        }
+        
+        const restoreBtn = document.getElementById('restore-btn');
+        if (restoreBtn) {
+            restoreBtn.addEventListener('click', () => {
+                const code = prompt('Enter your verification code from your payment email:');
+                if (code) {
+                    this.verifyPayment(code);
+                }
+            });
+        }
     }
 
     renderCategoryLocks() {
