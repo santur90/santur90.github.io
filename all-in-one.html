@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="google-adsense-account" content="ca-pub-7843612688525663">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7843612688525663" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单位换算 - Unit Converter</title>
+    <meta name="description" content="免费在线单位换算工具，支持长度、重量、温度、体积、面积、速度、数据存储、燃油效率、功率、压力、时间、货币等12类单位转换，提供中文、英文、法文、西班牙文四种语言">
+    <meta name="keywords" content="单位换算,单位转换,unit converter,长度转换,重量转换,温度转换,货币换算,在线工具">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%234CAF50'>⚙</text></svg>">
+    <link rel="stylesheet" href="styles.css?v=20260202">
+</head>
+<body>
+    <div class="container">
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            <select id="language-select">
+                <option value="zh">中文</option>
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
+            </select>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <h1 id="app-title">单位换算</h1>
+            <p class="subtitle" id="app-subtitle">Unit Converter</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Category Selector -->
+            <div class="category-selector">
+                <button class="category-btn active" data-category="length">长度</button>
+                <button class="category-btn" data-category="weight">重量</button>
+                <button class="category-btn" data-category="temperature">温度</button>
+                <button class="category-btn" data-category="volume">体积</button>
+                <button class="category-btn" data-category="area">面积</button>
+                <button class="category-btn" data-category="speed">速度</button>
+                <button class="category-btn" data-category="dataStorage">数据存储</button>
+                <button class="category-btn" data-category="fuelMileage">燃油效率</button>
+                <button class="category-btn" data-category="power">功率</button>
+                <button class="category-btn" data-category="pressure">压力</button>
+                <button class="category-btn" data-category="time">时间</button>
+                <button class="category-btn" data-category="currency">货币</button>
+            </div>
+
+            <!-- Converter Section -->
+            <div class="converter-section">
+                <div class="converter-box">
+                    <div class="input-group">
+                        <label for="input-value" id="label-input">输入值</label>
+                        <input 
+                            type="number" 
+                            id="input-value" 
+                            placeholder="输入数值"
+                            value="1"
+                            step="any"
+                        >
+                    </div>
+
+                    <div class="unit-group">
+                        <div class="unit-select">
+                            <label for="from-unit" id="label-from">从</label>
+                            <select id="from-unit"></select>
+                        </div>
+
+                        <button class="swap-btn" id="swap-btn" title="交换单位">
+                            ⇄
+                        </button>
+
+                        <div class="unit-select">
+                            <label for="to-unit" id="label-to">到</label>
+                            <select id="to-unit"></select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-box">
+                    <div class="result-display">
+                        <div class="result-value" id="result-value">0</div>
+                        <div class="result-unit" id="result-unit"></div>
+                    </div>
+                    <button class="copy-btn" id="copy-btn" title="复制结果">
+                        📋 <span id="btn-copy">复制</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- History Section -->
+            <div class="history-section">
+                <h3 id="label-history">转换历史</h3>
+                <div class="history-list" id="history-list">
+                    <p class="empty-state" id="empty-history">暂无历史记录</p>
+                </div>
+                <button class="clear-history-btn" id="clear-history-btn">清空历史</button>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 Unit Converter. Made with ❤️</p>
+            <div class="share-buttons">
+                <button class="share-btn" id="copy-link-btn" title="Copy Link" onclick="window.shareButtons?.copyLink ? window.shareButtons.copyLink() : window.prompt('Copy link:', window.location.href)">🔗</button>
+                <button class="share-btn" id="share-twitter-btn" title="Share on X" onclick="window.shareButtons?.shareToTwitter ? window.shareButtons.shareToTwitter() : window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href), '_blank')">𝕏</button>
+                <button class="share-btn" id="share-reddit-btn" title="Share on Reddit" onclick="window.shareButtons?.shareToReddit ? window.shareButtons.shareToReddit() : window.open('https://reddit.com/submit?url=' + encodeURIComponent(window.location.href), '_blank')">📱</button>
+                <button class="share-btn" id="share-wechat-btn" title="Share on WeChat" onclick="window.shareButtons?.shareToWeChat ? window.shareButtons.shareToWeChat() : window.open('https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(window.location.href), '_blank')">💬</button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- PayPal Tip Jar (Fixed Position) -->
+    <div class="tip-jar" id="tip-jar">
+        <button class="tip-jar-toggle" id="tip-jar-toggle" title="Support us">
+            💝
+        </button>
+        <div class="tip-jar-content" id="tip-jar-content" style="display: none;">
+            <div class="tip-jar-header">
+                <h4>Support Us ☕</h4>
+                <button class="tip-jar-close" id="tip-jar-close">✕</button>
+            </div>
+            <p class="tip-jar-text">Enjoy this tool? Buy us a coffee!</p>
+            <div class="tip-jar-qr">
+                <!-- PayPal Tip Jar QR Code -->
+                <img src="./Tip.png" alt="PayPal QR Code" class="qr-img">
+            <p class="tip-jar-hint">Scan to support our work</p>
+        </div>
+    </div>
+
+    <script src="currency-api.js?v=20260202"></script>
+    <script src="i18n.js?v=20260202"></script>
+    <script src="converters.js?v=20260202"></script>
+    <script src="app.js?v=20260202"></script>
+    <script src="tip-jar.js?v=20260202"></script>
+    <script src="share.js?v=20260202"></script>
+    
+    <!-- Visitor Map Widget - Collapsible -->
+    <div id="mapWidget" onclick="toggleMap(event)" style="position: fixed; bottom: 10px; left: 10px; z-index: 1000; background: white; padding: 5px; border-radius: 50%; width: 50px; height: 50px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.2); cursor: pointer; transition: all 0.3s ease;">
+        <div id="mapIcon" style="font-size: 40px; line-height: 40px; text-align: center;">🌍</div>
+        <div id="mapContent" style="display: none; pointer-events: none;">
+            <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=EP1S8wkLjh8065HQCPL79zFjnoY0rjrhdSJTtDxbT1g&cl=ffffff"></script>
+        </div>
+    </div>
+    <script>
+        function toggleMap(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const widget = document.getElementById('mapWidget');
+            const icon = document.getElementById('mapIcon');
+            const content = document.getElementById('mapContent');
+            const isExpanded = widget.style.width !== '50px';
+            
+            if (isExpanded) {
+                widget.style.width = '50px';
+                widget.style.height = '50px';
+                widget.style.borderRadius = '50%';
+                icon.style.display = 'block';
+                content.style.display = 'none';
+            } else {
+                widget.style.width = 'auto';
+                widget.style.height = 'auto';
+                widget.style.borderRadius = '8px';
+                icon.style.display = 'none';
+                content.style.display = 'block';
+            }
+        }
+    </script>
+    
+    <!-- PayPal Donation QR Code - Fixed bottom-right, Expandable -->
+    <div id="qrWidget" onclick="toggleQR(event)" style="position: fixed; bottom: 10px; right: 10px; z-index: 1000; background: white; padding: 8px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-align: center; cursor: pointer; transition: all 0.3s ease;">
+        <p id="qrLabel" style="color: #666; font-size: 11px; margin: 0 0 5px 0;">☕ Support</p>
+        <img id="qrImage" src="Tip.png" alt="Donate" style="width: 100px; height: 100px; border-radius: 6px; display: block;">
+    </div>
+    <script>
+        function toggleQR(event) {
+            event.stopPropagation();
+            const widget = document.getElementById('qrWidget');
+            const label = document.getElementById('qrLabel');
+            const image = document.getElementById('qrImage');
+            const isExpanded = image.style.width === '300px';
+            if (isExpanded) {
+                image.style.width = '100px';
+                image.style.height = '100px';
+                label.style.display = 'block';
+            } else {
+                image.style.width = '300px';
+                image.style.height = '300px';
+                label.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

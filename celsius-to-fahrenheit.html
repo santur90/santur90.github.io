@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-adsense-account" content="ca-pub-7843612688525663">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7843612688525663" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celsius to Fahrenheit Converter (°C → °F) | Unit Converter</title>
+    <meta name="description" content="This Celsius to Fahrenheit converter provides an instant and accurate way to convert temperature from °C to °F. Formula: °F = (°C × 9/5) + 32. Use the calculator below for quick results.">
+    <meta name="keywords" content="celsius to fahrenheit, °C to °F, temperature converter, C to F calculator">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%234CAF50'>⚙</text></svg>">
+    <link rel="canonical" href="https://santur90.github.io/celsius-to-fahrenheit.html">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Celsius to Fahrenheit Converter",
+      "applicationCategory": "Calculator",
+      "operatingSystem": "All",
+      "description": "Fast and accurate Celsius to Fahrenheit temperature converter",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #87CEEB 0%, #B0E0E6 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .description {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .converter {
+            display: grid;
+            gap: 20px;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        label {
+            color: #555;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        input {
+            padding: 12px 16px;
+            font-size: 18px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            outline: none;
+            border-color: #fa709a;
+        }
+        .swap-btn {
+            background: #fa709a;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .swap-btn:hover {
+            background: #e8577f;
+        }
+        .formula {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-link a {
+            color: #fa709a;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 480px) {
+            .container { padding: 24px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 data-i18n="pages.celsiusToFahrenheit.title">Celsius to Fahrenheit Converter (°C → °F)</h1>
+        <p class="description" data-i18n="pages.celsiusToFahrenheit.description">
+            This Celsius to Fahrenheit converter provides an instant and accurate way to convert temperature from °C to °F. 
+            Formula: °F = (°C × 9/5) + 32. Use the calculator below for quick results.
+        </p>
+        
+        <div class="converter">
+            <div class="input-group">
+                <label for="celsius" data-i18n="pages.celsiusToFahrenheit.celsius">Celsius (°C)</label>
+                <input type="number" id="celsius" data-i18n-attr="placeholder:pages.celsiusToFahrenheit.enterCelsius" placeholder="Enter Celsius" step="any" autofocus>
+            </div>
+            
+            <button class="swap-btn" onclick="swap()" data-i18n-attr="title:pages.celsiusToFahrenheit.swap" title="Swap units">⇅</button>
+            
+            <div class="input-group">
+                <label for="fahrenheit" data-i18n="pages.celsiusToFahrenheit.fahrenheit">Fahrenheit (°F)</label>
+                <input type="number" id="fahrenheit" data-i18n-attr="placeholder:pages.celsiusToFahrenheit.enterFahrenheit" placeholder="Enter Fahrenheit" step="any">
+            </div>
+        </div>
+        
+        <div class="formula">
+            <strong data-i18n="common.formula">Formula:</strong> <span data-i18n="pages.celsiusToFahrenheit.formula">°F = (°C × 9/5) + 32 | °C = (°F - 32) × 5/9</span>
+        </div>
+        
+        <div class="back-link">
+            <a href="index.html" data-i18n="common.backToAll">← Back to all converters</a>
+        </div>
+        
+        <!-- Share buttons -->
+        <div style="margin-top: 30px; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button class="share-btn" id="copy-link-btn" title="Copy Link" style="background: white; border: 1px solid #ddd; border-radius: 50%; width: 45px; height: 45px; font-size: 1.5rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;">🔗</button>
+            <button class="share-btn" id="share-twitter-btn" title="Share on X" style="background: white; border: 1px solid #ddd; border-radius: 50%; width: 45px; height: 45px; font-size: 1.5rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;">𝕏</button>
+            <button class="share-btn" id="share-reddit-btn" title="Share on Reddit" style="background: white; border: 1px solid #ddd; border-radius: 50%; width: 45px; height: 45px; font-size: 1.5rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;">📱</button>
+            <button class="share-btn" id="share-wechat-btn" title="Share on WeChat" style="background: white; border: 1px solid #ddd; border-radius: 50%; width: 45px; height: 45px; font-size: 1.5rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;">💬</button>
+        </div>
+        
+    </div>
+    
+    <!-- Visitor Map Widget - Collapsible -->
+    <div id="mapWidget" onclick="toggleMap(event)" style="position: fixed; bottom: 10px; left: 10px; z-index: 1000; background: white; padding: 5px; border-radius: 50%; width: 50px; height: 50px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.2); cursor: pointer; transition: all 0.3s ease;">
+        <div id="mapIcon" style="font-size: 40px; line-height: 40px; text-align: center;">🌍</div>
+        <div id="mapContent" style="display: none; pointer-events: none;">
+            <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=EP1S8wkLjh8065HQCPL79zFjnoY0rjrhdSJTtDxbT1g&cl=ffffff"></script>
+        </div>
+    </div>
+    <script>
+        function toggleMap(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const widget = document.getElementById('mapWidget');
+            const icon = document.getElementById('mapIcon');
+            const content = document.getElementById('mapContent');
+            const isExpanded = widget.style.width !== '50px';
+            
+            if (isExpanded) {
+                widget.style.width = '50px';
+                widget.style.height = '50px';
+                widget.style.borderRadius = '50%';
+                icon.style.display = 'block';
+                content.style.display = 'none';
+            } else {
+                widget.style.width = 'auto';
+                widget.style.height = 'auto';
+                widget.style.borderRadius = '8px';
+                icon.style.display = 'none';
+                content.style.display = 'block';
+            }
+        }
+    </script>
+    
+    <script>
+        const celsiusInput = document.getElementById('celsius');
+        const fahrenheitInput = document.getElementById('fahrenheit');
+        
+        // Celsius to Fahrenheit conversion
+        celsiusInput.addEventListener('input', function() {
+            const celsius = parseFloat(this.value);
+            if (!isNaN(celsius)) {
+                fahrenheitInput.value = ((celsius * 9/5) + 32).toFixed(4);
+            } else {
+                fahrenheitInput.value = '';
+            }
+        });
+        
+        // Fahrenheit to Celsius conversion
+        fahrenheitInput.addEventListener('input', function() {
+            const fahrenheit = parseFloat(this.value);
+            if (!isNaN(fahrenheit)) {
+                celsiusInput.value = ((fahrenheit - 32) * 5/9).toFixed(4);
+            } else {
+                celsiusInput.value = '';
+            }
+        });
+        
+        // Swap function
+        function swap() {
+            const temp = celsiusInput.value;
+            celsiusInput.value = fahrenheitInput.value;
+            fahrenheitInput.value = temp;
+        }
+        
+        // Auto-parse input
+        celsiusInput.addEventListener('paste', function(e) {
+            setTimeout(() => {
+                const text = this.value;
+                const match = text.match(/(\d+\.?\d*)\s*(°?c|celsius)/i);
+                if (match) {
+                    this.value = match[1];
+                    this.dispatchEvent(new Event('input'));
+                }
+            }, 10);
+        });
+    </script>
+    
+    <!-- Share functionality -->
+    <script>
+        const shareButtons = {
+            init() {
+                this.setupEventListeners();
+            },
+            setupEventListeners() {
+                document.getElementById('copy-link-btn')?.addEventListener('click', () => this.copyLink());
+                document.getElementById('share-twitter-btn')?.addEventListener('click', () => this.shareToTwitter());
+                document.getElementById('share-reddit-btn')?.addEventListener('click', () => this.shareToReddit());
+                document.getElementById('share-wechat-btn')?.addEventListener('click', () => this.shareToWeChat());
+            },
+            copyLink() {
+                const url = window.location.href;
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(url).then(() => this.showToast('Link copied!')).catch(() => this.fallbackCopy(url));
+                } else {
+                    this.fallbackCopy(url);
+                }
+            },
+            fallbackCopy(url) {
+                const input = document.createElement('input');
+                input.value = url;
+                document.body.appendChild(input);
+                input.select();
+                document.execCommand('copy');
+                document.body.removeChild(input);
+                this.showToast('Link copied!');
+            },
+            shareToTwitter() {
+                const url = window.location.href;
+                const text = 'Check out this unit converter!';
+                const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+                window.open(twitterUrl, '_blank', 'width=550,height=420');
+            },
+            shareToReddit() {
+                const url = window.location.href;
+                const title = document.title;
+                const redditUrl = `https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
+                window.open(redditUrl, '_blank', 'width=550,height=420');
+            },
+            shareToWeChat() {
+                const url = window.location.href;
+                const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`;
+                window.open(qrUrl, '_blank');
+            },
+            showToast(message) {
+                const toast = document.createElement('div');
+                toast.textContent = message;
+                toast.style.cssText = 'position: fixed; bottom: 150px; left: 50%; transform: translateX(-50%); background: #333; color: white; padding: 10px 20px; border-radius: 5px; z-index: 10000; font-size: 14px;';
+                document.body.appendChild(toast);
+                setTimeout(() => toast.remove(), 2000);
+            }
+        };
+        shareButtons.init();
+    </script>
+    
+    <!-- Multi-language support -->
+    <script src="multi-language.js"></script>
+    <script>
+        // 转换器特定的翻译
+        const celsiusToFahrenheitTranslations = {
+            zh: {
+                pages: {
+                    celsiusToFahrenheit: {
+                        title: '摄氏度到华氏度转换器 (°C → °F)',
+                        description: '这个摄氏度到华氏度转换器提供了一个快速准确的转换方法。公式：°F = (°C × 9/5) + 32。',
+                        celsius: '摄氏度 (°C)',
+                        fahrenheit: '华氏度 (°F)',
+                        enterCelsius: '输入摄氏度',
+                        enterFahrenheit: '输入华氏度',
+                        swap: '交换单位',
+                        formula: '°F = (°C × 9/5) + 32 | °C = (°F - 32) × 5/9'
+                    }
+                },
+                common: {
+                    formula: '公式:',
+                    backToAll: '← 返回所有转换器'
+                }
+            },
+            en: {
+                pages: {
+                    celsiusToFahrenheit: {
+                        title: 'Celsius to Fahrenheit Converter (°C → °F)',
+                        description: 'This Celsius to Fahrenheit converter provides an instant and accurate way to convert temperature from °C to °F. Formula: °F = (°C × 9/5) + 32. Use the calculator below for quick results.',
+                        celsius: 'Celsius (°C)',
+                        fahrenheit: 'Fahrenheit (°F)',
+                        enterCelsius: 'Enter Celsius',
+                        enterFahrenheit: 'Enter Fahrenheit',
+                        swap: 'Swap units',
+                        formula: '°F = (°C × 9/5) + 32 | °C = (°F - 32) × 5/9'
+                    }
+                },
+                common: {
+                    formula: 'Formula:',
+                    backToAll: '← Back to all converters'
+                }
+            },
+            fr: {
+                pages: {
+                    celsiusToFahrenheit: {
+                        title: 'Convertisseur Celsius en Fahrenheit (°C → °F)',
+                        description: 'Ce convertisseur de Celsius en Fahrenheit fournit un moyen rapide et précis de convertir la température. Formule: °F = (°C × 9/5) + 32.',
+                        celsius: 'Celsius (°C)',
+                        fahrenheit: 'Fahrenheit (°F)',
+                        enterCelsius: 'Entrez les Celsius',
+                        enterFahrenheit: 'Entrez les Fahrenheit',
+                        swap: 'Inverser les unités',
+                        formula: '°F = (°C × 9/5) + 32 | °C = (°F - 32) × 5/9'
+                    }
+                },
+                common: {
+                    formula: 'Formule:',
+                    backToAll: '← Retour à tous les convertisseurs'
+                }
+            },
+            es: {
+                pages: {
+                    celsiusToFahrenheit: {
+                        title: 'Convertidor de Celsius a Fahrenheit (°C → °F)',
+                        description: 'Este convertidor de Celsius a Fahrenheit proporciona una forma rápida y precisa de convertir la temperatura. Fórmula: °F = (°C × 9/5) + 32.',
+                        celsius: 'Celsius (°C)',
+                        fahrenheit: 'Fahrenheit (°F)',
+                        enterCelsius: 'Ingrese Celsius',
+                        enterFahrenheit: 'Ingrese Fahrenheit',
+                        swap: 'Invertir unidades',
+                        formula: '°F = (°C × 9/5) + 32 | °C = (°F - 32) × 5/9'
+                    }
+                },
+                common: {
+                    formula: 'Fórmula:',
+                    backToAll: '← Volver a todos los convertidores'
+                }
+            }
+        };
+
+        // 初始化多语言页面
+        const page = new MultiLanguagePage(celsiusToFahrenheitTranslations);
+    </script>
+    
+    <!-- PayPal Donation QR Code - Fixed bottom-right, Expandable -->
+    <div id="qrWidget" onclick="toggleQR(event)" style="position: fixed; bottom: 10px; right: 10px; z-index: 1000; background: white; padding: 8px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-align: center; cursor: pointer; transition: all 0.3s ease;">
+        <p id="qrLabel" style="color: #666; font-size: 11px; margin: 0 0 5px 0;">☕ Support</p>
+        <img id="qrImage" src="Tip.png" alt="Donate" style="width: 100px; height: 100px; border-radius: 6px; display: block;">
+    </div>
+    <script>
+        function toggleQR(event) {
+            event.stopPropagation();
+            const widget = document.getElementById('qrWidget');
+            const label = document.getElementById('qrLabel');
+            const image = document.getElementById('qrImage');
+            const isExpanded = image.style.width === '300px';
+            if (isExpanded) {
+                image.style.width = '100px';
+                image.style.height = '100px';
+                label.style.display = 'block';
+            } else {
+                image.style.width = '300px';
+                image.style.height = '300px';
+                label.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

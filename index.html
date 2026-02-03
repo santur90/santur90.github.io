@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-adsense-account" content="ca-pub-7843612688525663">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7843612688525663" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n=\"pages.index.title\">Unit Converter - Fast & Accurate Conversion Tools</title>
+    <meta name="description" content="Free online unit converter tools. Convert length, weight, temperature, volume and more. Fast, accurate, and easy to use.">
+    <meta name="keywords" content="unit converter, cm to inch, kg to lbs, celsius to fahrenheit, meters to feet, km to miles">
+    <link rel="canonical" href="https://santur90.github.io/">
+    <meta name="google-site-verification" content="c18378261e0ca140">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%234CAF50'>⚙</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #87CEEB 0%, #B0E0E6 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        .subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        .section-title {
+            text-align: center;
+            color: white;
+            margin: 60px 0 40px 0;
+            font-size: 32px;
+            font-weight: 600;
+        }
+        .converter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        .converter-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .converter-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+        .converter-card h3 {
+            color: #667eea;
+            margin-bottom: 12px;
+            font-size: 24px;
+        }
+        .converter-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .converter-card.placeholder {
+            visibility: hidden;
+            pointer-events: none;
+        }
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 data-i18n="pages.index.mainTitle">🔄 Unit Converter</h1>
+            <p class="subtitle" data-i18n="pages.index.subtitle">Fast & Accurate Conversion Tools</p>
+        </header>
+        
+        <h2 class="section-title" data-i18n="pages.index.popularConverters">🔥 Popular Converters</h2>
+        
+        <div class="converter-grid">
+            <a href="cm-to-inch.html" class="converter-card">
+                <h3 data-i18n="pages.index.lengthTitle">📏 Length</h3>
+                <p data-i18n="pages.index.lengthDesc">Convert centimeters to inches and more</p>
+            </a>
+            <a href="kg-to-lbs.html" class="converter-card">
+                <h3 data-i18n="pages.index.weightTitle">⚖️ Weight</h3>
+                <p data-i18n="pages.index.weightDesc">Convert kilograms to pounds and more</p>
+            </a>
+            <a href="celsius-to-fahrenheit.html" class="converter-card">
+                <h3 data-i18n="pages.index.temperatureTitle">🌡️ Temperature</h3>
+                <p data-i18n="pages.index.temperatureDesc">Convert Celsius to Fahrenheit and more</p>
+            </a>
+            <a href="m-to-ft.html" class="converter-card">
+                <h3 data-i18n="pages.index.distanceTitle">📐 Distance</h3>
+                <p data-i18n="pages.index.distanceDesc">Convert meters to feet and more</p>
+            </a>
+            <a href="km-to-miles.html" class="converter-card">
+                <h3 data-i18n="pages.index.speedTitle">🛣️ Speed/Distance</h3>
+                <p data-i18n="pages.index.speedDesc">Convert kilometers to miles and more</p>
+            </a>
+            <a href="all-in-one.html#currency" class="converter-card">
+                <h3 data-i18n="pages.index.currencyTitle">💱 Currency</h3>
+                <p data-i18n="pages.index.currencyDesc">Convert currencies with live rates</p>
+            </a>
+            <div class="converter-card placeholder" aria-hidden="true"></div>
+            <a href="all-in-one.html" class="converter-card">
+                <h3 data-i18n="pages.index.allTitle">🧮 All Converters</h3>
+                <p data-i18n="pages.index.allDesc">Access all 12+ converter categories</p>
+            </a>
+            <div class="converter-card placeholder" aria-hidden="true"></div>
+        </div>
+        
+        <footer>
+            <p data-i18n="pages.index.copyright">&copy; 2026 Unit Converter. All rights reserved.</p>
+            <div class="share-buttons" style="margin-top: 20px; display: flex; gap: 1rem; justify-content: center;">
+                <button class="share-btn" id="copy-link-btn" data-i18n-attr="title:common.copyLink" title="Copy Link" style="background: white; border: 1px solid #ddd; border-radius: 50%; width: 45px; height: 45px; font-size: 1.5rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;">🔗</button>
+                <button class="share-btn" id="share-twitter-btn" data-i18n-attr="title:common.shareTwitter" title="Share on X" style="background: white; border: 1px solid #ddd; border-radius: 50%; width: 45px; height: 45px; font-size: 1.5rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;">𝕏</button>
+                <button class="share-btn" id="share-reddit-btn" data-i18n-attr="title:common.shareReddit" title="Share on Reddit" style="background: white; border: 1px solid #ddd; border-radius: 50%; width: 45px; height: 45px; font-size: 1.5rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;">📱</button>
+                <button class="share-btn" id="share-wechat-btn" data-i18n-attr="title:common.shareWeChat" title="Share on WeChat" style="background: white; border: 1px solid #ddd; border-radius: 50%; width: 45px; height: 45px; font-size: 1.5rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;">💬</button>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Map Widget - Collapsible Earth Icon -->
+    <div id="mapWidget" onclick="toggleMap(event)" style="position: fixed; bottom: 10px; left: 10px; z-index: 1000; background: white; padding: 5px; border-radius: 50%; width: 50px; height: 50px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.2); cursor: pointer; transition: all 0.3s ease;">
+        <div id="mapIcon" style="font-size: 40px; line-height: 40px; text-align: center;">🌍</div>
+        <div id="mapContent" style="display: none; pointer-events: none;">
+            <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=EP1S8wkLjh8065HQCPL79zFjnoY0rjrhdSJTtDxbT1g&cl=ffffff"></script>
+        </div>
+    </div>
+    <script>
+        function toggleMap(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const widget = document.getElementById('mapWidget');
+            const icon = document.getElementById('mapIcon');
+            const content = document.getElementById('mapContent');
+            const isExpanded = widget.style.width !== '50px';
+            if (isExpanded) {
+                widget.style.width = '50px';
+                widget.style.height = '50px';
+                widget.style.borderRadius = '50%';
+                icon.style.display = 'block';
+                content.style.display = 'none';
+            } else {
+                widget.style.width = 'auto';
+                widget.style.height = 'auto';
+                widget.style.borderRadius = '8px';
+                icon.style.display = 'none';
+                content.style.display = 'block';
+            }
+        }
+    </script>
+    
+    <!-- Share functionality -->
+    <script>
+        const shareButtons = {
+            init() {
+                this.setupEventListeners();
+            },
+            setupEventListeners() {
+                document.getElementById('copy-link-btn')?.addEventListener('click', () => this.copyLink());
+                document.getElementById('share-twitter-btn')?.addEventListener('click', () => this.shareToTwitter());
+                document.getElementById('share-reddit-btn')?.addEventListener('click', () => this.shareToReddit());
+                document.getElementById('share-wechat-btn')?.addEventListener('click', () => this.shareToWeChat());
+            },
+            copyLink() {
+                const url = window.location.href;
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(url).then(() => this.showToast('Link copied!')).catch(() => this.fallbackCopy(url));
+                } else {
+                    this.fallbackCopy(url);
+                }
+            },
+            fallbackCopy(url) {
+                const input = document.createElement('input');
+                input.value = url;
+                document.body.appendChild(input);
+                input.select();
+                document.execCommand('copy');
+                document.body.removeChild(input);
+                this.showToast('Link copied!');
+            },
+            shareToTwitter() {
+                const url = window.location.href;
+                const text = 'Check out this awesome Unit Converter!';
+                const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+                window.open(twitterUrl, '_blank', 'width=550,height=420');
+            },
+            shareToReddit() {
+                const url = window.location.href;
+                const title = document.title;
+                const redditUrl = `https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
+                window.open(redditUrl, '_blank', 'width=550,height=420');
+            },
+            shareToWeChat() {
+                const url = window.location.href;
+                const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`;
+                window.open(qrUrl, '_blank');
+            },
+            showToast(message) {
+                const toast = document.createElement('div');
+                toast.textContent = message;
+                toast.style.cssText = 'position: fixed; bottom: 150px; left: 50%; transform: translateX(-50%); background: #333; color: white; padding: 10px 20px; border-radius: 5px; z-index: 10000; font-size: 14px;';
+                document.body.appendChild(toast);
+                setTimeout(() => toast.remove(), 2000);
+            }
+        };
+        shareButtons.init();
+    </script>
+    
+    <!-- Multi-language support -->
+    <script src="multi-language.js"></script>
+    <script>
+        // 首页特定的翻译
+        const indexTranslations = {
+            zh: {
+                pages: {
+                    index: {
+                        title: '单位转换器 - 快速准确的转换工具',
+                        mainTitle: '🔄 单位转换器',
+                        subtitle: '快速准确的转换工具',
+                        popularConverters: '🔥 热门转换器',
+                        lengthTitle: '📏 长度',
+                        lengthDesc: '厘米转英寸等更多',
+                        weightTitle: '⚖️ 重量',
+                        weightDesc: '公斤转磅等更多',
+                        temperatureTitle: '🌡️ 温度',
+                        temperatureDesc: '摄氏度转华氏度等更多',
+                        distanceTitle: '📐 距离',
+                        distanceDesc: '米转英尺等更多',
+                        speedTitle: '🛣️ 速度/距离',
+                        speedDesc: '公里转英里等更多',
+                        currencyTitle: '💱 货币',
+                        currencyDesc: '使用实时汇率进行货币转换',
+                        allTitle: '🧮 所有转换器',
+                        allDesc: '访问12+个转换器类别',
+                        copyright: '© 2026 单位转换器。版权所有。'
+                    }
+                },
+                common: {
+                    copyLink: '复制链接',
+                    shareTwitter: '分享到X',
+                    shareReddit: '分享到Reddit',
+                    shareWeChat: '分享到微信'
+                }
+            },
+            en: {
+                pages: {
+                    index: {
+                        title: 'Unit Converter - Fast & Accurate Conversion Tools',
+                        mainTitle: '🔄 Unit Converter',
+                        subtitle: 'Fast & Accurate Conversion Tools',
+                        popularConverters: '🔥 Popular Converters',
+                        lengthTitle: '📏 Length',
+                        lengthDesc: 'Convert centimeters to inches and more',
+                        weightTitle: '⚖️ Weight',
+                        weightDesc: 'Convert kilograms to pounds and more',
+                        temperatureTitle: '🌡️ Temperature',
+                        temperatureDesc: 'Convert Celsius to Fahrenheit and more',
+                        distanceTitle: '📐 Distance',
+                        distanceDesc: 'Convert meters to feet and more',
+                        speedTitle: '🛣️ Speed/Distance',
+                        speedDesc: 'Convert kilometers to miles and more',
+                        currencyTitle: '💱 Currency',
+                        currencyDesc: 'Convert currencies with live rates',
+                        allTitle: '🧮 All Converters',
+                        allDesc: 'Access all 12+ converter categories',
+                        copyright: '© 2026 Unit Converter. All rights reserved.'
+                    }
+                },
+                common: {
+                    copyLink: 'Copy Link',
+                    shareTwitter: 'Share on X',
+                    shareReddit: 'Share on Reddit',
+                    shareWeChat: 'Share on WeChat'
+                }
+            },
+            fr: {
+                pages: {
+                    index: {
+                        title: 'Convertisseur d\'unités - Outils de conversion rapides et précis',
+                        mainTitle: '🔄 Convertisseur d\'unités',
+                        subtitle: 'Outils de conversion rapides et précis',
+                        popularConverters: '🔥 Convertisseurs populaires',
+                        lengthTitle: '📏 Longueur',
+                        lengthDesc: 'Convertir les centimètres en pouces et plus',
+                        weightTitle: '⚖️ Poids',
+                        weightDesc: 'Convertir les kilogrammes en livres et plus',
+                        temperatureTitle: '🌡️ Température',
+                        temperatureDesc: 'Convertir les Celsius en Fahrenheit et plus',
+                        distanceTitle: '📐 Distance',
+                        distanceDesc: 'Convertir les mètres en pieds et plus',
+                        speedTitle: '🛣️ Vitesse/Distance',
+                        speedDesc: 'Convertir les kilomètres en miles et plus',
+                        currencyTitle: '💱 Devise',
+                        currencyDesc: 'Convertir les devises avec des taux en direct',
+                        allTitle: '🧮 Tous les convertisseurs',
+                        allDesc: 'Accédez à plus de 12+ catégories de convertisseurs',
+                        copyright: '© 2026 Convertisseur d\'unités. Tous droits réservés.'
+                    }
+                },
+                common: {
+                    copyLink: 'Copier le lien',
+                    shareTwitter: 'Partager sur X',
+                    shareReddit: 'Partager sur Reddit',
+                    shareWeChat: 'Partager sur WeChat'
+                }
+            },
+            es: {
+                pages: {
+                    index: {
+                        title: 'Convertidor de unidades - Herramientas de conversión rápidas y precisas',
+                        mainTitle: '🔄 Convertidor de unidades',
+                        subtitle: 'Herramientas de conversión rápidas y precisas',
+                        popularConverters: '🔥 Convertidores populares',
+                        lengthTitle: '📏 Longitud',
+                        lengthDesc: 'Convertir centímetros a pulgadas y más',
+                        weightTitle: '⚖️ Peso',
+                        weightDesc: 'Convertir kilogramos a libras y más',
+                        temperatureTitle: '🌡️ Temperatura',
+                        temperatureDesc: 'Convertir Celsius a Fahrenheit y más',
+                        distanceTitle: '📐 Distancia',
+                        distanceDesc: 'Convertir metros a pies y más',
+                        speedTitle: '🛣️ Velocidad/Distancia',
+                        speedDesc: 'Convertir kilómetros a millas y más',
+                        currencyTitle: '💱 Moneda',
+                        currencyDesc: 'Convierte monedas con tasas en vivo',
+                        allTitle: '🧮 Todos los convertidores',
+                        allDesc: 'Acceda a más de 12+ categorías de convertidores',
+                        copyright: '© 2026 Convertidor de unidades. Todos los derechos reservados.'
+                    }
+                },
+                common: {
+                    copyLink: 'Copiar enlace',
+                    shareTwitter: 'Compartir en X',
+                    shareReddit: 'Compartir en Reddit',
+                    shareWeChat: 'Compartir en WeChat'
+                }
+            }
+        };
+
+        // 初始化多语言页面
+        const page = new MultiLanguagePage(indexTranslations);
+    </script>
+    
+    <div id="qrWidget" onclick="toggleQR(event)" style="position: fixed; bottom: 10px; right: 10px; z-index: 1000; background: white; padding: 8px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-align: center; cursor: pointer; transition: all 0.3s ease;">
+        <p id="qrLabel" style="color: #666; font-size: 11px; margin: 0 0 5px 0;">☕ Support</p>
+        <img id="qrImage" src="Tip.png" alt="Donate" style="width: 100px; height: 100px; border-radius: 6px; display: block;">
+    </div>
+    <script>
+        function toggleQR(event) {
+            event.stopPropagation();
+            const widget = document.getElementById('qrWidget');
+            const label = document.getElementById('qrLabel');
+            const image = document.getElementById('qrImage');
+            const isExpanded = image.style.width === '300px';
+            if (isExpanded) {
+                image.style.width = '100px';
+                image.style.height = '100px';
+                label.style.display = 'block';
+            } else {
+                image.style.width = '300px';
+                image.style.height = '300px';
+                label.style.display = 'none';
+            }
+        }
+    </script>
+
+    <!-- GitHub Pages Diagnostic Script -->
+    <script>
+        console.log("=== PAGE DIAGNOSTIC INFO ===");
+        console.log("Current URL:", window.location.href);
+        console.log("Page Title:", document.title);
+        console.log("HTML Language:", document.documentElement.lang);
+        console.log("Body HTML Length:", document.body.innerHTML.length);
+        console.log("Has 'Popular Converters':", document.body.innerText.includes("Popular Converters") ? "✓ YES" : "✗ NO");
+        console.log("Has 'All Converters':", document.body.innerText.includes("All Converters") ? "✓ YES" : "✗ NO");
+        console.log("Has language-switcher:", document.body.innerText.includes("language-switcher") ? "✗ YES (WRONG PAGE)" : "✓ NO (CORRECT PAGE)");
+        console.log("=== END DIAGNOSTIC ===");
+    </script>
+</body>
+</html>
