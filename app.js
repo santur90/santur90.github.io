@@ -5,6 +5,8 @@ class UnitConverterApp {
         this.currentCategory = 'length';
         this.history = this.loadHistory();
         this.preferences = this.loadPreferences();
+                this.isUnlocked = this.loadUnlockStatus() || false;
+        this.lockedCategories = ['energy', 'force', 'torque', 'dataSpeed', 'pants', 'shoes', 'tops'];
         this.init();
     }
 
@@ -22,6 +24,20 @@ class UnitConverterApp {
         
         this.renderHistory();
     }
+
+        loadUnlockStatus() {
+        return localStorage.getItem('isProUnlocked') === 'true';
+    }
+
+    unlockPro() {
+        this.isUnlocked = true;
+        localStorage.setItem('isProUnlocked', 'true');
+        alert(i18n.t('unlockedMsg') || "Unlocked successfully! Enjoy.");
+        this.renderCategoryLocks();
+        this.hidePaywall();
+        // Retry setting category if pending? simplified for now.
+    }
+
 
     cacheElements() {
         // 语言选择器
@@ -125,6 +141,11 @@ class UnitConverterApp {
     }
 
     setCategory(category) {
+        if (this.lockedCategories && this.lockedCategories.includes(category) && !this.isUnlocked) {
+            this.showPaywall(category);
+            return;
+        }
+
         this.currentCategory = category;
 
         // 更新按钮状态
@@ -417,6 +438,113 @@ class UnitConverterApp {
     loadHistory() {
         const saved = localStorage.getItem('converterHistory');
         return saved ? JSON.parse(saved) : [];
+    }
+
+    showPaywall(category) {
+        let modal = document.getElementById('paywall-modal');
+        if (!modal) {
+            this.createPaywallModal();
+            modal = document.getElementById('paywall-modal');
+        }
+        
+        // Update content
+        const catName = i18n.t(`categories.${category}`) || category;
+        const msgEl = document.getElementById('paywall-msg-text');
+        if(msgEl) msgEl.textContent = `${i18n.t('unlockFeature') || 'Unlock'}: ${catName}`;
+        
+        modal.style.display = 'flex';
+    }
+
+    hidePaywall() {
+        const modal = document.getElementById('paywall-modal');
+        if (modal) modal.style.display = 'none';
+    }
+
+    createPaywallModal() {
+        const modal = document.createElement('div');
+        modal.id = 'paywall-modal';
+        // Simple inline styles for modal
+        modal.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px);';
+        
+        const content = `
+            <div style="background: white; padding: 30px; border-radius: 16px; width: 90%; max-width: 350px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.3); position: relative; animation: popIn 0.3s ease;">
+                <button id="close-paywall-x" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #999;">&times;</button>
+                <div style="font-size: 48px; margin-bottom: 15px;">🔒</div>
+                <h3 id="paywall-msg-text" style="margin-bottom: 10px; font-size: 20px; font-weight: bold; color: #333;">Unlock Premium</h3>
+                <p style="color: #666; margin-bottom: 25px; line-height: 1.5; font-size: 14px;" data-i18n="payDescription">
+                    One-time payment to unlock Energy, Force, Torque, Data Speed and more.
+                </p>
+                <div style="background: #f5f5f7; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                    <span style="font-size: 28px; font-weight: 800; color: #0070BA;">$0.99</span>
+                    <span style="color: #666; font-size: 12px;">/ lifetime</span>
+                </div>
+                
+                <a href="https://paypal.me/santur90/0.99" target="_blank" id="pay-btn" style="display: block; width: 100%; background: #0070BA; color: white; border: none; padding: 14px; border-radius: 30px; font-weight: bold; text-decoration: none; margin-bottom: 15px; transition: transform 0.2s;">
+                    Pay with PayPal
+                </a>
+                
+                <div style="border-top: 1px solid #eee; padding-top: 15px;">
+                    <button id="restore-btn" style="background: none; border: none; color: #0070BA; font-size: 13px; font-weight: 600; cursor: pointer;">
+                        Already Paid? / Restore
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        modal.innerHTML = content;
+        document.body.appendChild(modal);
+        
+        // Add animation style if not present
+        if (!document.getElementById('paywall-ani-style')) {
+            const style = document.createElement('style');
+            style.id = 'paywall-ani-style';
+            style.textContent = `@keyframes popIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }`;
+            document.head.appendChild(style);
+        }
+        
+        // Handlers
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) this.hidePaywall();
+        });
+        
+        document.getElementById('close-paywall-x').addEventListener('click', () => this.hidePaywall());
+        
+        document.getElementById('pay-btn').addEventListener('click', () => {
+             // Simulate "waiting for payment" then unlock
+             // In a real usage, we assume they pay.
+             setTimeout(() => {
+                 this.unlockPro();
+             }, 5000); 
+        });
+        
+        document.getElementById('restore-btn').addEventListener('click', () => {
+             this.unlockPro();
+        });
+    }
+
+    renderCategoryLocks() {
+        if (!this.categoryBtns) return;
+        
+        this.categoryBtns.forEach(btn => {
+            const cat = btn.dataset.category;
+            const isLocked = this.lockedCategories && this.lockedCategories.includes(cat) && !this.isUnlocked;
+            
+            let icon = btn.querySelector('.lock-icon');
+            if (isLocked) {
+                if (!icon) {
+                    icon = document.createElement('span');
+                    icon.className = 'lock-icon';
+                    icon.innerHTML = ' 🔒';
+                    icon.style.fontSize = '12px';
+                    icon.style.marginLeft = '4px';
+                    btn.appendChild(icon);
+                }
+                btn.style.opacity = '0.7';
+            } else {
+                if (icon) icon.remove();
+                btn.style.opacity = '1';
+            }
+        });
     }
 }
 

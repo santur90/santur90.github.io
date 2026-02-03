@@ -19,7 +19,10 @@ const translations = {
         shareText: '看看这个超棒的单位换算工具！',
         scanToShare: '扫码分享到微信',
         wechatHint: '使用微信扫描此二维码分享',
-        close: '关闭',
+        close: '关闭',,
+        unlockFeature: '解锁功能',
+        unlockedMsg: '解锁成功！',
+        payDescription: '一次性支付解锁所有高级转换器 (能量、力等)'
         categories: {
             length: '长度',
             weight: '重量',
@@ -200,7 +203,13 @@ const translations = {
         shareText: 'Check out this awesome Unit Converter!',
         scanToShare: 'Scan to share on WeChat',
         wechatHint: 'Scan this QR code with WeChat to share',
-        close: 'Close',
+        close: 'Close',,,
+        unlockFeature: 'Desbloquear',
+        unlockedMsg: '¡Desbloqueado!',
+        payDescription: 'Pago único para desbloquear todo'
+        unlockFeature: 'Unlock Feature',
+        unlockedMsg: 'Unlocked successfully!',
+        payDescription: 'One-time payment to unlock all special converters'
         categories: {
             length: 'Length',
             weight: 'Weight',
@@ -298,7 +307,10 @@ const translations = {
         shareText: 'Découvrez ce convertisseur d\'unités génial!',
         scanToShare: 'Scanner pour partager sur WeChat',
         wechatHint: 'Scannez ce code QR avec WeChat pour partager',
-        close: 'Fermer',
+        close: 'Fermer',,
+        unlockFeature: 'Déverrouiller',
+        unlockedMsg: 'Déverrouillé !',
+        payDescription: 'Paiement unique pour tout débloquer'
         categories: {
             length: 'Longueur',
             weight: 'Poids',
