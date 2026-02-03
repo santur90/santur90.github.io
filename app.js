@@ -5,10 +5,17 @@ class UnitConverterApp {
         this.currentCategory = 'length';
         this.history = this.loadHistory();
         this.preferences = this.loadPreferences();
-                this.isUnlocked = this.loadUnlockStatus() || false;
+        this.isUnlocked = this.loadUnlockStatus() || false;
         this.lockedCategories = ['energy', 'force', 'torque', 'dataSpeed', 'pants', 'shoes', 'tops'];
-        this.pendingCategory = null; // Store category user tried to access
+        this.pendingCategory = null;
+        this.init();
+    }
+
+    init() {
+        this.cacheElements();
+        this.setupEventListeners();
         this.initLanguage();
+        this.renderCategoryLocks();
         
         // 检查URL hash来确定初始类别
         const hashCategory = window.location.hash.slice(1); // 移除 #
