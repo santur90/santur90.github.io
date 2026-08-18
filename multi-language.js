@@ -95,10 +95,21 @@ class MultiLanguagePage {
             if (value && value[k] !== undefined) {
                 value = value[k];
             } else {
+                value = undefined;
+                break;
+            }
+        }
+
+        if (value !== undefined) return value;
+
+        value = this.translations.en;
+        for (const k of keys) {
+            if (value && value[k] !== undefined) {
+                value = value[k];
+            } else {
                 return defaultValue;
             }
         }
-        
         return value;
     }
 
