@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>命运书 FateBook</title>
+  <meta name="description" content="一本会记住你的书。每天翻开一页。" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main id="app"></main>
+  <div class="site-widgets">
+    <aside class="corner-widget visitor-widget" id="visitor-widget">
+      <button class="widget-toggle" id="visitor-toggle" type="button" aria-expanded="false" aria-controls="visitor-panel">
+        <span aria-hidden="true">🌍</span><span data-i18n="visitorLabel">Visitor map</span>
+      </button>
+      <div class="widget-panel visitor-panel" id="visitor-panel" hidden>
+        <div class="widget-panel-heading">
+          <p data-i18n="visitorTitle">Visitors around the world</p>
+          <button class="widget-close" type="button" data-widget-close="visitor" data-i18n-aria-label="close" aria-label="Close">×</button>
+        </div>
+        <div class="visitor-map-content">
+          <script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?d=EP1S8wkLjh8065HQCPL79zFjnoY0rjrhdSJTtDxbT1g&amp;cl=ffffff"></script>
+        </div>
+        <p class="widget-note" data-i18n="visitorNote">See recent visitor activity.</p>
+      </div>
+    </aside>
+    <aside class="corner-widget support-widget" id="support-widget">
+      <button class="widget-toggle" id="support-toggle" type="button" aria-expanded="false" aria-controls="support-panel">
+        <span aria-hidden="true">☕</span><span data-i18n="supportLabel">Support</span>
+      </button>
+      <div class="widget-panel support-panel" id="support-panel" hidden>
+        <div class="widget-panel-heading">
+          <p data-i18n="supportTitle">Enjoying FateBook?</p>
+          <button class="widget-close" type="button" data-widget-close="support" data-i18n-aria-label="close" aria-label="Close">×</button>
+        </div>
+        <a class="support-qr-link" href="https://buy.stripe.com/8x228s5ts2xV14N1q9fAc00" target="_blank" rel="noopener noreferrer">
+          <img class="support-qr" src="assets/donate-qr.png" alt="Stripe payment QR code" data-i18n-alt="supportQrAlt" />
+        </a>
+        <a class="support-link" href="https://buy.stripe.com/8x228s5ts2xV14N1q9fAc00" target="_blank" rel="noopener noreferrer" data-i18n="supportLink">Support FateBook</a>
+        <p class="widget-note" data-i18n="supportNote">Scan the code or use the link to support FateBook.</p>
+      </div>
+    </aside>
+  </div>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://santur90.github.io/sitemap.xml
+Sitemap: https://santurlabs.site/sitemap.xml
